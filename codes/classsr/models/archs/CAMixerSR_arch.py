@@ -7,7 +7,7 @@ import numpy as np
 
 from einops import rearrange
 from basicsr.archs.arch_util import flow_warp 
-from basicsr.utils.registry import ARCH_REGISTRY
+from local_basicsr.utils.registry import ARCH_REGISTRY
 
 
 class LayerNorm(nn.Module):

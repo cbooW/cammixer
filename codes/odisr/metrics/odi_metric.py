@@ -7,7 +7,7 @@ import math
 
 from basicsr.metrics.metric_util import reorder_image, to_y_channel
 from basicsr.utils.color_util import rgb2ycbcr_pt
-from basicsr.utils.registry import METRIC_REGISTRY
+from local_basicsr.utils.registry import METRIC_REGISTRY
 
 
 @METRIC_REGISTRY.register()

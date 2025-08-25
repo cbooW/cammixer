@@ -5,7 +5,7 @@ import math
 import numpy as np
 
 from basicsr.archs.vgg_arch import VGGFeatureExtractor
-from basicsr.utils.registry import LOSS_REGISTRY
+from local_basicsr.utils.registry import LOSS_REGISTRY
 from basicsr.losses.loss_util import weighted_loss
 from basicsr.losses.basic_loss import l1_loss, L1Loss
 

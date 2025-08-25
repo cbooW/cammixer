@@ -1,7 +1,7 @@
 name: CAMixerSR_x4
 model_type: SRModel
-scale: 4
-num_gpu: 4
+scale: 1
+num_gpu: 2
 manual_seed: 0
 
 # dataset and data loader settings
@@ -9,36 +9,28 @@ datasets:
   train:
     name: DIV2K
     type: PairedImageDataset
-    dataroot_gt: /mnt/bn/mmlab-wangyan-srdata/DIV2K/DIV2K_train_HR_sub
-    dataroot_lq: /mnt/bn/mmlab-wangyan-srdata/DIV2K/DIV2K_train_LR_bicubic/X4_sub
-    meta_info_file: /mnt/bn/mmlab-wangyan-srdata/DIV2K/meta_info_DIV2K800sub_GT.txt
+    dataroot_gt: /home/cwan5290/PETMRI/dataset/train/T2_png
+    dataroot_lq: /home/cwan5290/PETMRI/dataset_undersampled/T2_png
+    #meta_info_file: /mnt/bn/mmlab-wangyan-srdata/DIV2K/meta_info_DIV2K800sub_GT.txt
     io_backend:
       type: disk
 
-    gt_size: 256
+    gt_size: 512
     use_hflip: true
     use_rot: true
 
     # data loader
     use_shuffle: true
-    num_worker_per_gpu: 8
-    batch_size_per_gpu: 16
+    num_worker_per_gpu: 4
+    batch_size_per_gpu: 1
     dataset_enlarge_ratio: 64
     prefetch_mode: ~
 
   val_1:
     name: B100
     type: PairedImageDataset
-    dataroot_gt: /mnt/bn/mmlab-wangyan-srdata/Benchmarks/SR/HR/B100/x4
-    dataroot_lq: /mnt/bn/mmlab-wangyan-srdata/Benchmarks/SR/LR/LRBI/B100/x4
-    io_backend:
-      type: disk
-
-  val_2:
-    name: Urban100
-    type: PairedImageDataset
-    dataroot_gt: /mnt/bn/mmlab-wangyan-srdata/Benchmarks/SR/HR/Urban100/x4
-    dataroot_lq: /mnt/bn/mmlab-wangyan-srdata/Benchmarks/SR/LR/LRBI/Urban100/x4
+    dataroot_gt: /home/cwan5290/PETMRI/dataset/val/T2_png
+    dataroot_lq: /home/cwan5290/PETMRI/dataset_undersampled/T2_png_val
     io_backend:
       type: disk
 
@@ -46,7 +38,7 @@ datasets:
 network_g:
   type: CAMixerSR
   ratio: 0.5
-  scale: 4
+  scale: 1
 
 # path
 path:
@@ -87,13 +79,13 @@ val:
   metrics:
     psnr:
       type: calculate_psnr
-      crop_border: 4
-      test_y_channel: true
+      crop_border: 0
+      test_y_channel: false
       better: higher  # the higher, the better. Default: higher
     ssim:
       type: calculate_ssim
-      crop_border: 4
-      test_y_channel: true
+      crop_border: 0
+      test_y_channel: false
       better: higher  # the higher, the better. Default: higher
 
 # logging settings

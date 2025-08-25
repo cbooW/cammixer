@@ -3,7 +3,7 @@ from copy import deepcopy
 from os import path as osp
 
 from basicsr.utils import get_root_logger, scandir
-from basicsr.utils.registry import LOSS_REGISTRY
+from local_basicsr.utils.registry import LOSS_REGISTRY
 from basicsr.losses.gan_loss import g_path_regularize, gradient_penalty_loss, r1_penalty
 
 __all__ = ['build_loss', 'gradient_penalty_loss', 'r1_penalty', 'g_path_regularize']

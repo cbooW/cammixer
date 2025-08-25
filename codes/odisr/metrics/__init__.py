@@ -3,7 +3,7 @@ from copy import deepcopy
 from os import path as osp
 
 from basicsr.utils import scandir
-from basicsr.utils.registry import METRIC_REGISTRY
+from local_basicsr.utils.registry import METRIC_REGISTRY
 from basicsr.metrics.niqe import calculate_niqe
 from basicsr.metrics.psnr_ssim import calculate_psnr, calculate_ssim
 

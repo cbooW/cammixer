@@ -4,7 +4,7 @@ from torchvision.transforms.functional import normalize
 from basicsr.data.data_util import paired_paths_from_folder, paired_paths_from_lmdb, paired_paths_from_meta_info_file
 from basicsr.data.transforms import augment
 from basicsr.utils import FileClient, bgr2ycbcr, imfrombytes, img2tensor
-from basicsr.utils.registry import DATASET_REGISTRY
+from local_basicsr.utils.registry import DATASET_REGISTRY
 from .utils import paired_random_crop
 import numpy as np
 import cv2

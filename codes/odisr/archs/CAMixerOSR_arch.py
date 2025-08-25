@@ -7,7 +7,7 @@ import torch.nn.functional as F
 from einops import rearrange
 
 from basicsr.archs.arch_util import to_2tuple, trunc_normal_, flow_warp, DCNv2Pack
-from basicsr.utils.registry import ARCH_REGISTRY
+from local_basicsr.utils.registry import ARCH_REGISTRY
 
 
 class LayerNorm(nn.Module):

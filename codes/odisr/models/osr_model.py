@@ -7,7 +7,7 @@ from basicsr.archs import build_network
 from basicsr.losses import build_loss
 from basicsr.metrics import calculate_metric
 from basicsr.utils import get_root_logger, imwrite, tensor2img
-from basicsr.utils.registry import MODEL_REGISTRY
+from local_basicsr.utils.registry import MODEL_REGISTRY
 from basicsr.models.base_model import BaseModel
 from torch.nn import functional as F
 
