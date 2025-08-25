@@ -36,7 +36,7 @@ import torch
 from os import path as osp
 
 import sys
-sys.path.append('/home/cwan5290/CAMixerSR')
+sys.path.append('/home/cwan5290/CAMixerSR/codes')
 
 from basicsr.data import build_dataloader, build_dataset
 from basicsr.data.data_sampler import EnlargedSampler

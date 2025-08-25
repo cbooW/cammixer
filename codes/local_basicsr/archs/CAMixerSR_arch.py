@@ -375,7 +375,9 @@ class CAMixerSR(nn.Module):
         self.n_feats = n_feats
         self.window_sizes = 16
         self.tile = tile
-
+        #
+        self.ratio = ratio
+        #
         self.head = nn.Conv2d(n_colors, n_feats, 3, 1, 1)
 
         self.global_predictor = nn.Sequential(nn.Conv2d(n_feats, 8, 1, 1, 0, bias=True),

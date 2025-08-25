@@ -1,7 +1,7 @@
 name: CAMixerSR_x4
-model_type: SRModel
+model_type: CAModel
 scale: 1
-num_gpu: 2
+num_gpu: 1
 manual_seed: 0
 
 # dataset and data loader settings
@@ -15,7 +15,7 @@ datasets:
     io_backend:
       type: disk
 
-    gt_size: 512
+    gt_size: 256
     use_hflip: true
     use_rot: true
 
@@ -29,8 +29,8 @@ datasets:
   val_1:
     name: B100
     type: PairedImageDataset
-    dataroot_gt: /home/cwan5290/PETMRI/dataset/val/T2_png
-    dataroot_lq: /home/cwan5290/PETMRI/dataset_undersampled/T2_png_val
+    dataroot_gt: /home/cwan5290/PETMRI/dataset/small_val/T2
+    dataroot_lq: /home/cwan5290/PETMRI/dataset/small_val/T2_undersampled
     io_backend:
       type: disk
 
@@ -72,8 +72,8 @@ train:
 
 # validation settings
 val:
-  val_freq: !!float 2.5e3
-  save_img: false
+  val_freq: !!float 100
+  save_img: true
   pbar: False
 
   metrics:
