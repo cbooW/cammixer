@@ -9,6 +9,9 @@ import math
 from tqdm import tqdm
 from os import path as osp
 
+#新加
+import os
+
 @MODEL_REGISTRY.register()
 class CAModel(SRModel):
 
@@ -61,3 +64,32 @@ class CAModel(SRModel):
 
         if self.ema_decay > 0:
             self.model_ema(decay=self.ema_decay)
+
+        #新加
+    # 添加验证结果保存功能
+    # 添加验证结果保存功能
+    def validation(self, dataloader, current_iter, tb_logger, save_img):
+        """Validation function with result saving to txt file."""
+        
+        # 调用父类的验证方法
+        super().validation(dataloader, current_iter, tb_logger, save_img)
+        
+        # 保存验证结果到txt文件
+        self._save_validation_results(dataloader.dataset.opt['name'], current_iter)
+
+    def _save_validation_results(self, dataset_name, current_iter):
+        """Save validation results to txt file."""
+        if hasattr(self, 'metric_results') and self.metric_results:
+            # 创建results目录
+            results_dir = osp.join(self.opt['path']['log'], 'validation_results')
+            os.makedirs(results_dir, exist_ok=True)
+            
+            # 创建txt文件路径
+            txt_path = osp.join(results_dir, f'{dataset_name}_validation_results.txt')
+            
+            # 写入结果
+            with open(txt_path, 'a') as f:
+                f.write(f"Iteration {current_iter}, Dataset {dataset_name}:\n")
+                for metric, value in self.metric_results.items():
+                    f.write(f"  {metric}: {value:.6f}\n")
+                f.write("\n")

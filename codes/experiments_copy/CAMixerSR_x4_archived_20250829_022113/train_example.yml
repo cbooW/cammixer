@@ -1,3 +1,7 @@
+# GENERATE TIME: Fri Aug 29 02:21:00 2025
+# CMD:
+# local_basicsr/train.py -opt options/train/train_example.yml
+
 name: CAMixerSR_x4
 model_type: CAModel
 scale: 1
@@ -22,7 +26,7 @@ datasets:
     # data loader
     use_shuffle: true
     num_worker_per_gpu: 4
-    batch_size_per_gpu: 1
+    batch_size_per_gpu: 2
     dataset_enlarge_ratio: 64
     prefetch_mode: ~
 

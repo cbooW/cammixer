@@ -1,3 +1,7 @@
+# GENERATE TIME: Fri Aug 29 02:21:13 2025
+# CMD:
+# local_basicsr/train.py -opt options/train/train_example.yml
+
 name: CAMixerSR_x4
 model_type: CAModel
 scale: 1

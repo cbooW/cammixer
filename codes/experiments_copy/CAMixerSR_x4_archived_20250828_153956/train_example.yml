@@ -1,3 +1,7 @@
+# GENERATE TIME: Thu Aug 28 15:39:21 2025
+# CMD:
+# local_basicsr/train.py -opt options/train/train_example.yml
+
 name: CAMixerSR_x4
 model_type: CAModel
 scale: 1
@@ -29,10 +33,8 @@ datasets:
   val_1:
     name: B100
     type: PairedImageDataset
-    dataroot_gt: /home/cwan5290/PETMRI/dataset/val/T2_png
-    dataroot_lq: /home/cwan5290/PETMRI/dataset_undersampled/T2_png_val
-    # dataroot_gt: /home/cwan5290/PETMRI/dataset/small_val/T2
-    # dataroot_lq: /home/cwan5290/PETMRI/dataset/small_val/T2_undersampled
+    dataroot_gt: /home/cwan5290/PETMRI/dataset/small_val/T2
+    dataroot_lq: /home/cwan5290/PETMRI/dataset/small_val/T2_undersampled
     io_backend:
       type: disk
 
@@ -40,10 +42,7 @@ datasets:
 network_g:
   type: CAMixerSR
   ratio: 0.5
-  # ratio: 0.01
   scale: 1
-  n_feats: 60
-
 
 # path
 path:
@@ -53,9 +52,6 @@ path:
 
 # training settings
 train:
-
-  use_amp: true
-
   ema_decay: 0.999
   optim_g:
     type: AdamW
@@ -68,8 +64,7 @@ train:
     milestones: [250000, 400000, 450000, 475000]
     gamma: 0.5
 
-  #total_iter: 500000
-  total_iter: 2000000
+  total_iter: 500000
 
   warmup_iter: -1  # no warm up
 
@@ -81,7 +76,7 @@ train:
 
 # validation settings
 val:
-  val_freq: !!float 1000
+  val_freq: !!float 2500
   save_img: true
   pbar: False
 
@@ -99,7 +94,7 @@ val:
 
 # logging settings
 logger:
-  print_freq: 1000
+  print_freq: 100
   save_checkpoint_freq: !!float 5e3
   use_tb_logger: true
   wandb:

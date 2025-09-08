@@ -372,6 +372,9 @@ class Group(nn.Module):
 class CAMixerSR(nn.Module):
     def __init__(self, n_block=[4,4,6,6], n_group=4, n_colors=3, n_feats=60, scale=4, ratio=0.5, tile=None):
         super().__init__()
+
+        print(f"CAMixerSR initialized with: scale={scale}, n_feats={n_feats}")
+        
         self.n_feats = n_feats
         self.window_sizes = 16
         self.tile = tile
