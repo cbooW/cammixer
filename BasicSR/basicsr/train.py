@@ -1,33 +1,3 @@
-
-# import datetime
-# import logging
-# import math
-# import time
-# import torch
-# from os import path as osp
-
-# from local_basicsr.data import build_dataloader, build_dataset
-# from local_basicsr.data.data_sampler import EnlargedSampler
-# from local_basicsr.data.prefetch_dataloader import CPUPrefetcher, CUDAPrefetcher
-# from local_basicsr.models import build_model
-# from local_basicsr.utils import (AvgTimer, MessageLogger, check_resume, get_env_info, get_root_logger, get_time_str,
-#                            init_tb_logger, init_wandb_logger, make_exp_dirs, mkdir_and_rename, scandir)
-# from local_basicsr.utils.options import copy_opt_file, dict2str, parse_options
-
-# # Manually register CAMixerSR after all imports
-# from local_basicsr.utils.registry import ARCH_REGISTRY
-# import sys
-# sys.path.insert(0, osp.dirname(osp.dirname(osp.abspath(__file__))))
-
-# # Import and register CAMixerSR manually
-# import importlib.util
-# spec = importlib.util.spec_from_file_location("CAMixerSR_arch", 
-#                                                osp.join(osp.dirname(osp.dirname(osp.abspath(__file__))),
-#                                                        "basicsr/archs/CAMixerSR_arch.py"))
-# CAMixerSR_module = importlib.util.module_from_spec(spec)
-# spec.loader.exec_module(CAMixerSR_module)
-
-
 import datetime
 import logging
 import math
@@ -35,14 +5,10 @@ import time
 import torch
 from os import path as osp
 
-import sys
-sys.path.append('/home/cwan5290/CAMixerSR/codes')
-sys.path.insert(0, '/home/cwan5290/CAMixerSR/BasicSR')
-
 from basicsr.data import build_dataloader, build_dataset
 from basicsr.data.data_sampler import EnlargedSampler
 from basicsr.data.prefetch_dataloader import CPUPrefetcher, CUDAPrefetcher
-from local_basicsr.models import build_model
+from basicsr.models import build_model
 from basicsr.utils import (AvgTimer, MessageLogger, check_resume, get_env_info, get_root_logger, get_time_str,
                            init_tb_logger, init_wandb_logger, make_exp_dirs, mkdir_and_rename, scandir)
 from basicsr.utils.options import copy_opt_file, dict2str, parse_options
@@ -123,7 +89,7 @@ def load_resume_state(opt):
 
 
 def train_pipeline(root_path):
-    # parse options, set distributed setting, set ramdom seed
+    # parse options, set distributed setting, set random seed
     opt, args = parse_options(root_path, is_train=True)
     opt['root_path'] = root_path
 
