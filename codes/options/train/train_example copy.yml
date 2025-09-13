@@ -8,10 +8,9 @@ manual_seed: 0
 datasets:
   train:
     name: DIV2K
-    type: PairedImageDatasetInt16
-    dataroot_gt: /home/cwan5290/PETMRI/dataset/train/T2
-    dataroot_lq: /home/cwan5290/PETMRI/dataset_undersampled/train/T2
-    normalize_max: 8000.0
+    type: PairedImageDataset
+    dataroot_gt: /home/cwan5290/PETMRI/dataset/train/T2_png
+    dataroot_lq: /home/cwan5290/PETMRI/dataset_undersampled/T2_png
     #meta_info_file: /mnt/bn/mmlab-wangyan-srdata/DIV2K/meta_info_DIV2K800sub_GT.txt
     io_backend:
       type: disk
@@ -29,10 +28,9 @@ datasets:
 
   val_1:
     name: B100
-    type: PairedImageDatasetInt16
-    normalize_max: 8000.0
-    dataroot_gt: /home/cwan5290/PETMRI/dataset/val/T2
-    dataroot_lq: /home/cwan5290/PETMRI/dataset_undersampled/val/T2
+    type: PairedImageDataset
+    dataroot_gt: /home/cwan5290/PETMRI/dataset/val/T2_png
+    dataroot_lq: /home/cwan5290/PETMRI/dataset_undersampled/T2_png_val
     # dataroot_gt: /home/cwan5290/PETMRI/dataset/small_val/T2
     # dataroot_lq: /home/cwan5290/PETMRI/dataset/small_val/T2_undersampled
     io_backend:
